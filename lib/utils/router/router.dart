@@ -1,6 +1,6 @@
 import 'package:amigo_secreto_talp/form/form_page.dart';
 import 'package:amigo_secreto_talp/home/home_page.dart';
-import 'package:amigo_secreto_talp/router/bottom_navigation_bar.dart';
+import 'package:amigo_secreto_talp/utils/router/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,12 +20,12 @@ final router = GoRouter(
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/',
-          builder: (context, state) => const HomePage(),
+          builder: (context, state) => HomePage(),
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/events',
-          builder: (context, state) => const FormPage(),
+          builder: (context, state) => FormPage(),
         )
       ]
     )
