@@ -9,73 +9,108 @@ import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_purple.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_yellow.dart';
 
 enum ColorsEn {blue, green, red, purple, yellow}
+enum ContrastEn {standard, medium, high}
 
 class ThemeControl {
-  bool isLightTheme;
-  TextTheme textTheme;
-  ColorsEn color;
+  final TextTheme _textTheme;
+  bool _isLightTheme;
+  ColorsEn _color;
+  ContrastEn _contrast;
+  MaterialTheme _theme;
 
   ThemeControl({
-    required this.isLightTheme,
-    required this.textTheme,
-    required this.color,
-  });
+    required bool isLightTheme,
+    required TextTheme textTheme,
+    required ColorsEn color,
+    required ContrastEn constrast,
+    required MaterialTheme theme,
+  }) : _theme = theme, _contrast = constrast, _color = color, _textTheme = textTheme, _isLightTheme = isLightTheme;
 
-  _setTheme() {
-    MaterialTheme? materialtheme;
+  bool get isLightTheme => _isLightTheme;
 
-    switch (color) {
+  TextTheme get textTheme => _textTheme;
+
+  ColorsEn get color => _color;
+
+  MaterialTheme get theme => _theme;
+
+  _setTheme() {switch (color) {
       case ColorsEn.blue:
-        materialtheme = MaterialThemeBlue(textTheme);
+        _theme = MaterialThemeBlue(textTheme);
         break;
       case ColorsEn.green:
-        materialtheme = MaterialThemeGreen(textTheme);
+        _theme = MaterialThemeGreen(textTheme);
         break;
       case ColorsEn.red:
-        materialtheme = MaterialThemeRed(textTheme);
+        _theme = MaterialThemeRed(textTheme);
         break;
       case ColorsEn.purple:
-        materialtheme = MaterialThemePurple(textTheme);
+        _theme = MaterialThemePurple(textTheme);
         break;
       case ColorsEn.yellow:
-        materialtheme = MaterialThemeYellow(textTheme);
+        _theme = MaterialThemeYellow(textTheme);
         break;
     }
 
     if (isLightTheme) {
-      defaultTheme.add( materialtheme.light() );
+      switch (_contrast) {
+        case ContrastEn.standard:
+          defaultTheme.add( _theme.light() );
+          break;
+        case ContrastEn.medium:
+          defaultTheme.add( _theme.lightMediumContrast() );
+          break;
+        case ContrastEn.high:
+          defaultTheme.add( _theme.lightHighContrast() );
+          break;
+      }
     } else {
-      defaultTheme.add( materialtheme.dark() );
+      switch (_contrast) {
+        case ContrastEn.standard:
+          defaultTheme.add( _theme.dark() );
+          break;
+        case ContrastEn.medium:
+          defaultTheme.add( _theme.darkMediumContrast() );
+          break;
+        case ContrastEn.high:
+          defaultTheme.add( _theme.darkHighContrast() );
+          break;
+      }
     }
   }
 
-  setIsLightTheme(value) {
-    isLightTheme = value;
+  toggleIsLightTheme() {
+    _isLightTheme = !_isLightTheme;
+    _setTheme();
+  }
+
+  setContrast(ContrastEn value) {
+    _contrast = value;
     _setTheme();
   }
 
   setBlue() {
-    color = ColorsEn.blue;
+    _color = ColorsEn.blue;
     _setTheme();
   }
 
   setGreen() {
-    color = ColorsEn.green;
+    _color = ColorsEn.green;
     _setTheme();
   }
 
   setRed() {
-    color = ColorsEn.red;
+    _color = ColorsEn.red;
     _setTheme();
   }
 
   setPurple() {
-    color = ColorsEn.purple;
+    _color = ColorsEn.purple;
     _setTheme();
   }
 
   setYellow() {
-    color = ColorsEn.yellow;
+    _color = ColorsEn.yellow;
     _setTheme();
   }
 }

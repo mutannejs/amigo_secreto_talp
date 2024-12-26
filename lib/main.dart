@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:amigo_secreto_talp/utils/theme/create_texttheme.dart';
+import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_base.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_blue.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
 import 'package:flutter/material.dart';
@@ -38,15 +39,13 @@ class _MyAppState extends ConsumerState<MyApp> {
     var isLight = View.of(context).platformDispatcher.platformBrightness == Brightness.light;
 
     /// Tema padrão inicial
-    ThemeData initialData = isLight ?
-      MaterialThemeBlue(textTheme).light() :
-      MaterialThemeBlue(textTheme).dark();
+    MaterialTheme initialTheme = MaterialThemeBlue(textTheme);
 
     /// Seta o themeControlProvider com as informações de tema do dispositivo e fontes padrão
-    themeControlProvider = StateProvider((ref) => ThemeControl(isLightTheme: isLight, textTheme: textTheme, color: ColorsEn.blue));
+    themeControlProvider = StateProvider((ref) => ThemeControl(isLightTheme: isLight, textTheme: textTheme, color: ColorsEn.blue, constrast: ContrastEn.standard, theme: initialTheme));
 
     return StreamBuilder<ThemeData>(
-      initialData: initialData,
+      initialData: isLight ? initialTheme.light() : initialTheme.dark(),
       stream: defaultTheme.stream,
       builder: (context, snapshot) {
         return MaterialApp.router(

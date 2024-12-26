@@ -1,4 +1,8 @@
 import 'package:amigo_secreto_talp/main.dart';
+import 'package:amigo_secreto_talp/pages/home/components/contrastbutton.dart';
+import 'package:amigo_secreto_talp/pages/home/components/lightbutton.dart';
+import 'package:amigo_secreto_talp/pages/home/components/setcolortheme.dart';
+import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,81 +16,50 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
+    ThemeControl themeController = ref.read(themeControlProvider!.notifier).state;
+
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
         child: Column(
           children: [
-            Wrap(
-              alignment: WrapAlignment.center,
-              runSpacing: 10,
-              spacing: 10,
-              children: [
-                OutlinedButton(
-                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setBlue(),
-                  child: Text('AZUL', style: TextStyle(color: Color(0xff006970)),),
-                ),
-                OutlinedButton(
-                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setGreen(),
-                  child: Text('VERDE', style: TextStyle(color: Color(0xff006e0b)),),
-                ),
-                OutlinedButton(
-                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setRed(),
-                  child: Text('VERMELHO', style: TextStyle(color: Color(0xffa30b00)),),
-                ),
-                OutlinedButton(
-                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setPurple(),
-                  child: Text('ROXO', style: TextStyle(color: Color(0xff8f0094)),),
-                ),
-                OutlinedButton(
-                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setYellow(),
-                  child: Text('AMARELO', style: TextStyle(color: Color(0xff755b00)),),
-                ),
-              ],
+            /// botões para alterar cor base do tema
+            SetColorTheme(themeController: themeController),
+
+            SizedBox(height: 8),
+
+            /// Botões para alterar tema escuro/claro e contraste
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: themeController.theme.light().focusColor,
+                borderRadius: BorderRadius.circular(30)
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  LightButton(themeController: themeController),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.standard),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.medium),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.high),
+                ],
+              ),
             ),
 
             const SizedBox(height: 30),
             Text(
-              'Exemplo para o estilo definido:',
+              'Amigo Secreto',
               style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
-              'Exemplo para o estilo definido:',
+              'Sorteie quem seus amigos vão presentear!',
               style: Theme.of(context).textTheme.displayMedium,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Text(
-              'orem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only filved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-              style: Theme.of(context).textTheme.bodyLarge
-            ),
-            const SizedBox(height: 30),
-            Text(
-              'hen an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a read).',
+              'Para criar um novo evento, clique na aba \'Eventos\' e adicione todos os participantes.',
               style: Theme.of(context).textTheme.bodyMedium
             ),
-            const SizedBox(height: 30),
-            Wrap(
-              alignment: WrapAlignment.center,
-              runSpacing: 10,
-              spacing: 10,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.home_rounded),
-                  label: Text('Elevated Button'),
-                ),
-                OutlinedButton.icon(
-                  onPressed: (){},
-                  icon: Icon(Icons.home_outlined),
-                  label: Text('Outlined Button'),
-                ),
-                FilledButton.icon(
-                  onPressed: (){},
-                  icon: Icon(Icons.home_filled),
-                  label: Text('Filled Button'),
-                )
-              ],
-            )
           ]
         )
       ),
