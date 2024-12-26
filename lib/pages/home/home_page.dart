@@ -1,8 +1,6 @@
-import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
+import 'package:amigo_secreto_talp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-bool isLightTheme = true;
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -25,23 +23,23 @@ class _HomePageState extends ConsumerState<HomePage> {
               spacing: 10,
               children: [
                 OutlinedButton(
-                  onPressed: () => ThemeControl.setBlue(),
+                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setBlue(),
                   child: Text('AZUL', style: TextStyle(color: Color(0xff006970)),),
                 ),
                 OutlinedButton(
-                  onPressed: () => ThemeControl.setGreen(),
+                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setGreen(),
                   child: Text('VERDE', style: TextStyle(color: Color(0xff006e0b)),),
                 ),
                 OutlinedButton(
-                  onPressed: () => ThemeControl.setRed(),
+                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setRed(),
                   child: Text('VERMELHO', style: TextStyle(color: Color(0xffa30b00)),),
                 ),
                 OutlinedButton(
-                  onPressed: () => ThemeControl.setPurple(),
+                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setPurple(),
                   child: Text('ROXO', style: TextStyle(color: Color(0xff8f0094)),),
                 ),
                 OutlinedButton(
-                  onPressed: () => ThemeControl.setYellow(),
+                  onPressed: () => ref.read(themeControlProvider!.notifier).state.setYellow(),
                   child: Text('AMARELO', style: TextStyle(color: Color(0xff755b00)),),
                 ),
               ],

@@ -1,51 +1,60 @@
 import 'dart:async';
+import 'package:amigo_secreto_talp/utils/theme/create_texttheme.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_blue.dart';
+import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
 import 'package:flutter/material.dart';
 
 import 'package:amigo_secreto_talp/utils/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+
+/// Tema padrão do App
+/// Para ser manipulado deve-se usar os métodos do objeto themeControlProvider
+StreamController<ThemeData> defaultTheme = StreamController();
+
+/// Objeto usado paa alterar o tema padrão do App
+StateProvider<ThemeControl>? themeControlProvider;
+
 
 main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
-StreamController<ThemeData> defaultTheme = StreamController();
-TextTheme? textTheme;
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextTheme baseTextTheme = Theme.of(context).textTheme;
-    TextTheme bodyTextTheme = GoogleFonts.getTextTheme("Montserrat", baseTextTheme);
-    TextTheme displayTextTheme = GoogleFonts.getTextTheme("Alegreya Sans", baseTextTheme);
-    textTheme = displayTextTheme.copyWith(
-      bodyLarge: bodyTextTheme.bodyLarge,
-      bodyMedium: bodyTextTheme.bodyMedium,
-      bodySmall: bodyTextTheme.bodySmall,
-      labelLarge: bodyTextTheme.labelLarge,
-      labelMedium: bodyTextTheme.labelMedium,
-      labelSmall: bodyTextTheme.labelSmall,
-    );
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
 
-    ThemeData? initialData = textTheme == null ?
-      null :
-      View.of(context).platformDispatcher.platformBrightness == Brightness.dark ?
-        MaterialThemeBlue(textTheme!).dark() :
-        MaterialThemeBlue(textTheme!).light();
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    /// Define as fontes padrão do App
+    TextTheme textTheme = createTextTheme(context, "Montserrat", "Alegreya Sans");
+
+    /// Diz se o tema padrão do dispositivo é light ou não
+    var isLight = View.of(context).platformDispatcher.platformBrightness == Brightness.light;
+
+    /// Tema padrão inicial
+    ThemeData initialData = isLight ?
+      MaterialThemeBlue(textTheme).light() :
+      MaterialThemeBlue(textTheme).dark();
+
+    /// Seta o themeControlProvider com as informações de tema do dispositivo e fontes padrão
+    themeControlProvider = StateProvider((ref) => ThemeControl(isLightTheme: isLight, textTheme: textTheme, color: ColorsEn.blue));
 
     return StreamBuilder<ThemeData>(
-        initialData: initialData,
-        stream: defaultTheme.stream,
-        builder: (context, snapshot) {
-          return MaterialApp.router(
-            theme: snapshot.data,
-            debugShowCheckedModeBanner: false,
-            routerConfig: router
-          );
-        }
+      initialData: initialData,
+      stream: defaultTheme.stream,
+      builder: (context, snapshot) {
+        return MaterialApp.router(
+          theme: snapshot.data,
+          debugShowCheckedModeBanner: false,
+          routerConfig: router
+        );
+      }
     );
   }
 }
