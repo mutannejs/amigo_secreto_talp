@@ -10,18 +10,21 @@ class LightButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        shape: CircleBorder(),
-        iconSize: 24,
-        padding: EdgeInsets.all(16)
+    return Tooltip(
+      message: "Alterar para tema ${themeController.isLightTheme ? 'escuro' : 'claro'}",
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          iconSize: 24,
+          padding: EdgeInsets.all(16)
+        ),
+        onPressed: () => themeController.toggleIsLightTheme(),
+        label: SvgIcon(
+          icon: themeController.isLightTheme ?
+            SvgIconData('assets/icons/moon-outline.svg') :
+            SvgIconData('assets/icons/sunny-outline.svg')
+        )
       ),
-      onPressed: () => themeController.toggleIsLightTheme(),
-      label: SvgIcon(
-        icon: themeController.isLightTheme ?
-          SvgIconData('assets/icons/moon-outline.svg') :
-          SvgIconData('assets/icons/sunny-outline.svg')
-      )
     );
   }
 }

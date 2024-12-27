@@ -39,9 +39,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   LightButton(themeController: themeController),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.standard),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.medium),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.high),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.standard, message: "Contraste padrão"),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.medium, message: "Médio Contraste"),
+                  ConstrastButton(themeController: themeController, contrast: ContrastEn.high, message: "Alto Contraste"),
                 ],
               ),
             ),
