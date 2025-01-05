@@ -56,10 +56,10 @@ class EmailService {
     try {
       var connection = PersistentConnection(smtpServer);
 
-      await messages.map( (m) async {
-        var sendReport = await connection.send(m);
+      for (var i = 0; i < messages.length; i++) {
+        var sendReport = await connection.send(messages[i]);
         print('Message sent: ' + sendReport.toString());
-      }).last;
+      }
 
       await connection.close();
       return true;
