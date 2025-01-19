@@ -1,4 +1,6 @@
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
@@ -11,7 +13,8 @@ class LightButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: "Alterar para tema ${themeController.isLightTheme ? 'escuro' : 'claro'}",
+      message: themeController.isLightTheme ?
+          AppLocale.homeDarkThemeButtonMessage .getString(context) : AppLocale.homeLightThemeButtonMessage.getString(context),
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

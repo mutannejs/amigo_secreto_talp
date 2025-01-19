@@ -2,8 +2,11 @@ import 'package:amigo_secreto_talp/main.dart';
 import 'package:amigo_secreto_talp/pages/home/components/contrastbutton.dart';
 import 'package:amigo_secreto_talp/pages/home/components/lightbutton.dart';
 import 'package:amigo_secreto_talp/pages/home/components/setcolortheme.dart';
+import 'package:amigo_secreto_talp/pages/home/components/setlocalebuttons.dart';
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -39,26 +42,46 @@ class _HomePageState extends ConsumerState<HomePage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   LightButton(themeController: themeController),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.standard, message: "Contraste padrão"),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.medium, message: "Médio Contraste"),
-                  ConstrastButton(themeController: themeController, contrast: ContrastEn.high, message: "Alto Contraste"),
+                  ConstrastButton(
+                    themeController: themeController,
+                    contrast: ContrastEn.standard,
+                    message: AppLocale.homeStandardContrast.getString(context)
+                  ),
+                  ConstrastButton(
+                    themeController: themeController,
+                    contrast: ContrastEn.medium,
+                    message: AppLocale.homeMediumContrast.getString(context)
+                  ),
+                  ConstrastButton(
+                    themeController: themeController,
+                    contrast: ContrastEn.high,
+                    message: AppLocale.homeHighContrast.getString(context)
+                  ),
                 ],
               ),
             ),
 
+            const SizedBox(height: 10),
+
+            SetLocaleButtons(),
+
             const SizedBox(height: 30),
+
             Text(
-              'Amigo Secreto',
+              AppLocale.homeTitle.getString(context),
               style: Theme.of(context).textTheme.displayLarge,
+              textAlign: TextAlign.center,
             ),
             Text(
-              'Sorteie quem seus amigos vão presentear!',
+              AppLocale.homeSubtitle.getString(context),
               style: Theme.of(context).textTheme.displayMedium,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             Text(
-              'Para criar um novo evento, clique na aba \'Eventos\' e adicione todos os participantes.',
-              style: Theme.of(context).textTheme.bodyMedium
+              AppLocale.homeText.getString(context),
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
             ),
           ]
         )

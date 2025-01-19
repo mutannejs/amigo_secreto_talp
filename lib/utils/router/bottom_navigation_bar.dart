@@ -1,4 +1,6 @@
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomNavigationBarScaffold extends StatefulWidget {
@@ -36,9 +38,9 @@ class _BottomNavigationBarScaffoldState
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeTab,
         currentIndex: currentIndex,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.palette_outlined), label: 'Tema'),
-          BottomNavigationBarItem(icon: Icon(Icons.event_available_outlined), label: 'Eventos'),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.palette_outlined), label: AppLocale.navigationBarTheme.getString(context)),
+          BottomNavigationBarItem(icon: Icon(Icons.event_available_outlined), label: AppLocale.navigationBarEvents.getString(context)),
         ],
       ),
     );
