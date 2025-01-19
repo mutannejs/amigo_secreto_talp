@@ -37,10 +37,9 @@ class EmailService {
   /// Envia um email
   ///
   /// Message [message] : a mensagem a ser enviada. Deve ser ciada usando o método [createMail]
-  Future<bool> sendEmail(Message message) async {
+  Future<bool> sendOneEmail(Message message) async {
     try {
-      final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
+      await send(message, smtpServer);
       return true;
     } catch (e) {
       print('Message not sent.');
@@ -52,13 +51,12 @@ class EmailService {
   /// Envia um ou mais emails de uma vez
   /// 
   /// List&lt;Message&gt; [messages] : uma lista com tadas mensagens a serem enviadas. Devem ser criadas usando o método [createMail]
-  Future<bool> sendEmails(List<Message> messages) async {
+  Future<bool> sendAnyEmails(List<Message> messages) async {
     try {
       var connection = PersistentConnection(smtpServer);
 
       for (var i = 0; i < messages.length; i++) {
-        var sendReport = await connection.send(messages[i]);
-        print('Message sent: ' + sendReport.toString());
+        await connection.send(messages[i]);
       }
 
       await connection.close();
