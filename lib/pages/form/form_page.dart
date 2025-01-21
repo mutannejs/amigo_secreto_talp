@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -24,6 +25,10 @@ class _FormPageState extends State<FormPage> {
     setState(() {
       _controllers.removeAt(index);
     });
+  }
+
+  void _shufflePeople() {
+    _controllers.shuffle();
   }
 
   @override
@@ -99,9 +104,20 @@ class _FormPageState extends State<FormPage> {
             ),
             ElevatedButton(
               onPressed: () {
+                _shufflePeople();
+
                 for (var controller in _controllers) {
-                  print('Nome: ${controller['name']?.text}, Email: ${controller['email']?.text}');
+                  print('Nome: ${controller['name']!.text}');
+                  print('Email: ${controller['email']!.text}');
                 }
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: const Text('Formulário enviado com sucesso!'),
+                  ),
+                );
+
+                context.go('/');
               },
               child: const Text('Enviar'),
             ),
