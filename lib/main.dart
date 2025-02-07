@@ -4,11 +4,15 @@ import 'package:amigo_secreto_talp/utils/theme/create_texttheme.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_base.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_colors/theme_blue.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:amigo_secreto_talp/utils/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+
+import 'firebase_options.dart';
 
 
 /// Tema padrão do App
@@ -18,10 +22,18 @@ StreamController<ThemeData> defaultTheme = StreamController();
 /// Objeto usado paa alterar o tema padrão do App
 StateProvider<ThemeControl>? themeControlProvider;
 
+/// Usuário logado no sistema
+StateProvider<User?> currentUser = StateProvider<User?>( (ref) => null );
+
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await FlutterLocalization.instance.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -40,7 +52,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   void initState() {
     _localization.init(
       mapLocales: mapLocales,
-      initLanguageCode: 'en',
+      initLanguageCode: 'pt',
     );
     _localization.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();

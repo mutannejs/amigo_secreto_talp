@@ -20,10 +20,13 @@ class _BottomNavigationBarScaffoldState
   void changeTab(int index) {
     switch (index) {
       case 0:
-        context.go('/');
+        context.go('/home');
         break;
-      default:
+      case 1:
         context.go('/events');
+        break;
+      case 2:
+        context.go('/');
         break;
     }
     setState(() {
@@ -39,8 +42,18 @@ class _BottomNavigationBarScaffoldState
         onTap: changeTab,
         currentIndex: currentIndex,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.palette_outlined), label: AppLocale.navigationBarTheme.getString(context)),
-          BottomNavigationBarItem(icon: Icon(Icons.event_available_outlined), label: AppLocale.navigationBarEvents.getString(context)),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.palette_outlined),
+            label: AppLocale.navigationBarTheme.getString(context)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event_available_outlined),
+            label: AppLocale.navigationBarEvents.getString(context)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout_outlined),
+            label: AppLocale.navigationBarLogout.getString(context)
+          ),
         ],
       ),
     );
