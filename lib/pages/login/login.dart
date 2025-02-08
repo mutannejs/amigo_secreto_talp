@@ -1,4 +1,5 @@
 import 'package:amigo_secreto_talp/main.dart';
+import 'package:amigo_secreto_talp/services/auth.dart';
 import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,19 +41,20 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   String? language;
 
   Future<void> _login(WidgetRef ref) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
+      User? user = await AuthService().signInWithEmailAndPassword(
+        _emailController.text,
+        _passwordController.text
       );
-      ref.read(currentUser.notifier).state = userCredential.user;
 
-      // print('Login successful: ${userCredential.user}');
-      if (mounted) {
+      if (user == null) throw ErrorDescription('Não foi possível se logar');
+
+      ref.read(currentUser.notifier).state = user;
+
+      if (mounted ) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Autenticado com sucesso")));
         context.go('/home');
       }
