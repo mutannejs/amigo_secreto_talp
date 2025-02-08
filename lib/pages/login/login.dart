@@ -1,4 +1,5 @@
 import 'package:amigo_secreto_talp/main.dart';
+import 'package:amigo_secreto_talp/pages/login/components/setlocalebuttons.dart';
 import 'package:amigo_secreto_talp/services/auth.dart';
 import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
       ref.read(currentUser.notifier).state = user;
 
       if (mounted ) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Autenticado com sucesso")));
         context.go('/home');
       }
     } on FirebaseAuthException catch (e) {
@@ -66,6 +66,10 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
+
+  static const styleName = TextStyle(
+    fontWeight: FontWeight.bold,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +82,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
+            SetLocaleButtons(),
+            TextField( // Campo de email
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -86,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 16.0),
-            TextField(
+            TextField( // Campo de senha
               controller: _passwordController,
               decoration: InputDecoration(
                 labelText: AppLocale.login1.getString(context),
@@ -95,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
             SizedBox(height: 16.0),
-            Consumer(
+            Consumer( // LoginButton
               builder: (context, ref, child) {
                 return ElevatedButton(
                   onPressed: () => _login(ref),
@@ -104,10 +109,14 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             SizedBox(height: 16.0),
-            TextButton(
+            TextButton( // SignUp
               onPressed: () => context.go('/signup'),
               child: Text(AppLocale.login2.getString(context)),
             ),
+            SizedBox(height: 30.0),
+            Text('Feito por:'),
+            Text('Murillo Justino dos Santos', style: styleName),
+            Text('João de Camargo Brantz', style: styleName),
           ],
         ),
       ),

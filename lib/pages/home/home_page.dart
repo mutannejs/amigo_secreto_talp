@@ -2,7 +2,6 @@ import 'package:amigo_secreto_talp/main.dart';
 import 'package:amigo_secreto_talp/pages/home/components/contrastbutton.dart';
 import 'package:amigo_secreto_talp/pages/home/components/lightbutton.dart';
 import 'package:amigo_secreto_talp/pages/home/components/setcolortheme.dart';
-import 'package:amigo_secreto_talp/pages/home/components/setlocalebuttons.dart';
 import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:amigo_secreto_talp/utils/theme/theme_control.dart';
 import 'package:flutter/material.dart';
@@ -61,11 +60,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 10),
-
-            SetLocaleButtons(),
-
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
 
             Text(
               AppLocale.homeTitle.getString(context),
