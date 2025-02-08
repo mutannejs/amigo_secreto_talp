@@ -5,6 +5,7 @@ import 'package:flutter_localization/flutter_localization.dart';
 mixin AppLocale {
   static const String navigationBarTheme = 'navigationBarTheme';
   static const String navigationBarEvents = 'navigationBarEvents';
+  static const String navigationBarLogout = 'navigationBarLogout';
 
   static const String colorsBlue = 'colorsBlue';
   static const String colorsGreen = 'colorsGreen';
@@ -22,6 +23,12 @@ mixin AppLocale {
   static const String homeStandardContrast = 'homeStandardContrast';
   static const String homeMediumContrast = 'homeMediumContrast';
   static const String homeHighContrast = 'homeHighContrast';
+
+  static const String login1 = 'login1';
+  static const String login2 = 'login2';
+  static const String login3 = 'login3';
+  static const String login4 = 'login4';
+  static const String login5 = 'login5';
 
   static const Map<String, dynamic> PT = ptVariables;
   static const Map<String, dynamic> EN = enVariables;

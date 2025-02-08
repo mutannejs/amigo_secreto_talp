@@ -1,6 +1,8 @@
+import 'package:amigo_secreto_talp/pages/login/login.dart';
+
 const enVariables = {
   "navigationBarTheme": 'Theme',
-  "navigationBarEvents": 'Events',
+  "navigationBarLogout": 'Logout',
 
   "colorsBlue": 'blue',
   "colorsGreen": 'green',
@@ -19,4 +21,5 @@ const enVariables = {
   "homeMediumContrast": 'Medium Contrast',
   "homeHighContrast": 'High Contrast',
 
+  ...loginEN
 };

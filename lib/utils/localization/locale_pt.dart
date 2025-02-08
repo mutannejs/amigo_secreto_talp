@@ -1,6 +1,9 @@
+import 'package:amigo_secreto_talp/pages/login/login.dart';
+
 const ptVariables = {
   "navigationBarTheme": 'Tema',
   "navigationBarEvents": 'Eventos',
+  "navigationBarLogout": 'Sair',
 
   "colorsBlue": 'azul',
   "colorsGreen": 'verde',
@@ -18,4 +21,6 @@ const ptVariables = {
   "homeStandardContrast": 'Contraste Padrão',
   "homeMediumContrast": 'Contraste Médio',
   "homeHighContrast": 'Alto Contraste',
+
+  ...loginPT
 };

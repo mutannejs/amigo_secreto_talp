@@ -41,46 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCI0r84iNodkgL65GIATiIPEUG_9U7ryF0',
-    appId: '1:928335276212:web:dc8d5720a03b45976d0fe1',
-    messagingSenderId: '928335276212',
-    projectId: 'feed-project-963bb',
-    authDomain: 'feed-project-963bb.firebaseapp.com',
-    storageBucket: 'feed-project-963bb.firebasestorage.app',
+    apiKey: 'AIzaSyAHcATMYdZ9mxgXMl_y12GptIf9lmU0dMM',
+    appId: '1:1041483119113:web:e490227d190f4303fa56d8',
+    messagingSenderId: '1041483119113',
+    projectId: 'talpamigosecreto',
+    authDomain: 'talpamigosecreto.firebaseapp.com',
+    storageBucket: 'talpamigosecreto.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCCiKprQUppZjJRW9Luuh19UyqXoeftCrQ',
-    appId: '1:928335276212:android:985125bd847b514d6d0fe1',
-    messagingSenderId: '928335276212',
-    projectId: 'feed-project-963bb',
-    storageBucket: 'feed-project-963bb.firebasestorage.app',
+    apiKey: 'AIzaSyA6i0slC_MBNYV9nd1V0hEfc1Dm8QY5g_w',
+    appId: '1:1041483119113:android:0926bb9a6d9272dffa56d8',
+    messagingSenderId: '1041483119113',
+    projectId: 'talpamigosecreto',
+    storageBucket: 'talpamigosecreto.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCW_kxIP_6e0WS1ZXARqPJOElyuxLYYwls',
-    appId: '1:928335276212:ios:3edc2e60f57d73376d0fe1',
-    messagingSenderId: '928335276212',
-    projectId: 'feed-project-963bb',
-    storageBucket: 'feed-project-963bb.firebasestorage.app',
+    apiKey: 'AIzaSyAJFPTLM5REV5pkNfJ5_BipOXVOhbSODLE',
+    appId: '1:1041483119113:ios:c144fcc631295a1efa56d8',
+    messagingSenderId: '1041483119113',
+    projectId: 'talpamigosecreto',
+    storageBucket: 'talpamigosecreto.firebasestorage.app',
     iosBundleId: 'com.example.amigoSecretoTalp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCW_kxIP_6e0WS1ZXARqPJOElyuxLYYwls',
-    appId: '1:928335276212:ios:3edc2e60f57d73376d0fe1',
-    messagingSenderId: '928335276212',
-    projectId: 'feed-project-963bb',
-    storageBucket: 'feed-project-963bb.firebasestorage.app',
+    apiKey: 'AIzaSyAJFPTLM5REV5pkNfJ5_BipOXVOhbSODLE',
+    appId: '1:1041483119113:ios:c144fcc631295a1efa56d8',
+    messagingSenderId: '1041483119113',
+    projectId: 'talpamigosecreto',
+    storageBucket: 'talpamigosecreto.firebasestorage.app',
     iosBundleId: 'com.example.amigoSecretoTalp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCI0r84iNodkgL65GIATiIPEUG_9U7ryF0',
-    appId: '1:928335276212:web:ff8f6447269bc3bd6d0fe1',
-    messagingSenderId: '928335276212',
-    projectId: 'feed-project-963bb',
-    authDomain: 'feed-project-963bb.firebaseapp.com',
-    storageBucket: 'feed-project-963bb.firebasestorage.app',
+    apiKey: 'AIzaSyAHcATMYdZ9mxgXMl_y12GptIf9lmU0dMM',
+    appId: '1:1041483119113:web:2bffaddcb7e09517fa56d8',
+    messagingSenderId: '1041483119113',
+    projectId: 'talpamigosecreto',
+    authDomain: 'talpamigosecreto.firebaseapp.com',
+    storageBucket: 'talpamigosecreto.firebasestorage.app',
   );
 }
