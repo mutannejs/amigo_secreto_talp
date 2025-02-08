@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "928335276212",
+    "project_id": "feed-project-963bb",
+    "storage_bucket": "feed-project-963bb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928335276212:android:985125bd847b514d6d0fe1",
+        "android_client_info": {
+          "package_name": "com.example.amigo_secreto_talp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCiKprQUppZjJRW9Luuh19UyqXoeftCrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
