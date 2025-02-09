@@ -1,13 +1,23 @@
 {
   "project_info": {
+<<<<<<< HEAD
+    "project_number": "928335276212",
+    "project_id": "feed-project-963bb",
+    "storage_bucket": "feed-project-963bb.firebasestorage.app"
+=======
     "project_number": "1041483119113",
     "project_id": "talpamigosecreto",
     "storage_bucket": "talpamigosecreto.firebasestorage.app"
+>>>>>>> 108f61a58a479eb8f18d9eb368a695a8ade401b3
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
+        "mobilesdk_app_id": "1:928335276212:android:985125bd847b514d6d0fe1",
+=======
         "mobilesdk_app_id": "1:1041483119113:android:0926bb9a6d9272dffa56d8",
+>>>>>>> 108f61a58a479eb8f18d9eb368a695a8ade401b3
         "android_client_info": {
           "package_name": "com.example.amigo_secreto_talp"
         }
@@ -15,7 +25,11 @@
       "oauth_client": [],
       "api_key": [
         {
+<<<<<<< HEAD
+          "current_key": "AIzaSyCCiKprQUppZjJRW9Luuh19UyqXoeftCrQ"
+=======
           "current_key": "AIzaSyA6i0slC_MBNYV9nd1V0hEfc1Dm8QY5g_w"
+>>>>>>> 108f61a58a479eb8f18d9eb368a695a8ade401b3
         }
       ],
       "services": {
