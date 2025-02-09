@@ -61,6 +61,7 @@ class _BottomNavigationBarScaffoldState
           color: Colors.black87,
         ),
         showShadow: true,
+        shadowElevation: 15,
       ),
     );
   }

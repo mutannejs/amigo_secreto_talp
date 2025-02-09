@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 class SetLocaleButtons extends StatefulWidget {
   const SetLocaleButtons({super.key});
@@ -60,7 +59,7 @@ class _LocaleButtonState extends State<LocaleButton> {
     return OutlinedButton.icon(
       onPressed: () => _localization.translate(widget.code),
       icon: Image.asset(widget.flag, width: 16),
-      label: Text(widget.text),
+      label: Text(widget.text, style: TextStyle(fontFamily: 'Mono'),),
     );
   }
 }
