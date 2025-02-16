@@ -24,9 +24,12 @@ class _BottomNavigationBarScaffoldState
         context.go('/home');
         break;
       case 1:
-        context.go('/events');
+        context.go('/new');
         break;
       case 2:
+        context.go('/events');
+        break;
+      case 3:
         AuthService().signOut();
         context.go('/');
         break;
@@ -45,6 +48,7 @@ class _BottomNavigationBarScaffoldState
         onTap: changeTab,
         bottomBarItems: [
           IconNavigationBar(context, Icons.home_outlined, 'Início'),
+          IconNavigationBar(context, Icons.add_to_photos_outlined, 'Criar'),
           IconNavigationBar(context, Icons.event_outlined, 'Eventos'),
           IconNavigationBar(context, Icons.logout_outlined, 'Sair'),
         ],

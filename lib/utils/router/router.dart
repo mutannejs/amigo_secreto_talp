@@ -1,3 +1,5 @@
+import 'package:amigo_secreto_talp/pages/events/event_page.dart';
+import 'package:amigo_secreto_talp/pages/events/events_page.dart';
 import 'package:amigo_secreto_talp/pages/form/form_page.dart';
 import 'package:amigo_secreto_talp/pages/home/home_page.dart';
 import 'package:amigo_secreto_talp/pages/login/login.dart';
@@ -42,7 +44,21 @@ final router = GoRouter(
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/events',
+          builder: (context, state) => EventsPage(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _shellNavigatorKey,
+          path: '/new',
           builder: (context, state) => FormPage(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _shellNavigatorKey,
+          path: '/event',
+          builder: (context, state) {
+            final event = state.uri.queryParameters['event'];
+            final user = state.uri.queryParameters['user'];
+            return EventPage(event: event, user: user);
+          },
         )
       ]
     )
