@@ -1,3 +1,5 @@
+import 'package:amigo_secreto_talp/components/help.dart';
+import 'package:amigo_secreto_talp/main.dart';
 import 'package:amigo_secreto_talp/services/auth.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,7 @@ class _BottomNavigationBarScaffoldState
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
+      floatingActionButton: HelpButton(),
       bottomNavigationBar: AnimatedNotchBottomBar(
         notchBottomBarController: _controller,
         onTap: changeTab,

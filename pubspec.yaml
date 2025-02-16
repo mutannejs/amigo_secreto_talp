@@ -74,6 +74,8 @@ flutter:
     - assets/icons/sunny-outline.svg
     - assets/flags_jpg/flag_br.jpg
     - assets/flags_jpg/flag_us.jpg
+    - assets/help/help_colors.png
+    - assets/help/help_contrast.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
