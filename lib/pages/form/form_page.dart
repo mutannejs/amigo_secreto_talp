@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+final FirebaseFirestore db = FirebaseFirestore.instance;
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -11,7 +16,8 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   final List<Map<String, TextEditingController>> _controllers = [];
   int _numberOfPeople = 1;
-
+  User? user = auth.currentUser;
+  
   void _addPersonFields() {
     setState(() {
       _controllers.add({
@@ -110,7 +116,11 @@ class _FormPageState extends State<FormPage> {
                   print('Nome: ${controller['name']!.text}');
                   print('Email: ${controller['email']!.text}');
                 }
-
+                final data = _controllers.map((controller) => {
+                      'name': controller['name']!.text,
+                      'email': controller['email']!.text,
+                    }).toList();
+                db.collection("eventos").add({'data': data, 'user': user!.uid});
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: const Text('Formulário enviado com sucesso!'),
