@@ -127,7 +127,7 @@ class _FormPageState extends State<FormPage> {
                   ),
                 );
 
-                context.go('/');
+                context.go('/home');
               },
               child: const Text('Enviar'),
             ),
