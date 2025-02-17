@@ -13,7 +13,7 @@ const loginPT = {
   "login2": 'Não tem conta? Se cadastrar',
   "login3": 'Português',
   "login4": 'Inglês',
-  "login5": 'Espanhol',
+  "login5": 'Desenvolvido por',
 };
 
 const loginEN = {
@@ -21,15 +21,7 @@ const loginEN = {
   "login2": 'Don\'t have an account? Sign up',
   "login3": "Portuguese",
   "login4": "English",
-  "login5": "Spanish",
-};
-
-const loginES = {
-  "login1": "Contraseña",
-  "login2": "¿No tienes una cuenta? Regístrate",
-  "login3": "Portugués",
-  "login4": 'Inglés',
-  "login5": 'Espanhol',
+  "login5": "Developed by",
 };
 
 class LoginPage extends StatefulWidget {
@@ -115,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(AppLocale.login2.getString(context)),
             ),
             SizedBox(height: 30.0),
-            Text('Feito por:'),
+            Text(AppLocale.login5.getString(context)),
             Text('Murillo Justino dos Santos', style: styleName),
             Text('João de Camargo Brantz', style: styleName),
           ],

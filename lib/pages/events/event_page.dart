@@ -1,5 +1,19 @@
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:go_router/go_router.dart';
+
+const eventPT = {
+  'eventTitle': 'A pessoa sorteada foi...',
+  'eventButton': 'Ver nome',
+  'eventBack': 'Voltar',
+};
+
+const eventEN = {
+  'eventTitle': 'The person drawn was...',
+  'eventButton': 'See name',
+  'eventBack': 'Back',
+};
 
 class EventPage extends StatefulWidget {
   final String? event;
@@ -21,7 +35,7 @@ class _EventPageState extends State<EventPage> {
       child: Column(
         children: [
           Text( // Título
-            'Você sorteou...',
+            AppLocale.eventTitle.getString(context),
             style: Theme.of(context).textTheme.displayLarge,
           ),
           SizedBox(height: 36),
@@ -30,7 +44,7 @@ class _EventPageState extends State<EventPage> {
             firstChild: TextButton(
               onPressed: () => setState(() => showFriend = CrossFadeState.showSecond),
               child: Text(
-                'Ver nome',
+                AppLocale.eventButton.getString(context),
                 style: TextStyle(
                   fontSize: 20,
                   decoration: TextDecoration.underline
@@ -47,7 +61,7 @@ class _EventPageState extends State<EventPage> {
             ),
           ),
           Spacer(flex: 1,),
-          TextButton(onPressed: () => context.go('/events'), child: Text('Voltar'))
+          TextButton(onPressed: () => context.go('/events'), child: Text(AppLocale.eventBack.getString(context)))
         ],
       )
     );

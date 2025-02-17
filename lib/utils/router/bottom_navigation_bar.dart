@@ -1,9 +1,24 @@
 import 'package:amigo_secreto_talp/components/help.dart';
-import 'package:amigo_secreto_talp/main.dart';
 import 'package:amigo_secreto_talp/services/auth.dart';
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:go_router/go_router.dart';
+
+const navigationPT = {
+  'navigationHome': 'Início',
+  'navigationCreate': 'Criar',
+  'navigationEvents': 'Eventos',
+  'navigationLogout': 'Sair',
+};
+
+const navigationEN = {
+  'navigationHome': 'Home',
+  'navigationCreate': 'Create',
+  'navigationEvents': 'Events',
+  'navigationLogout': 'Logout',
+};
 
 class BottomNavigationBarScaffold extends StatefulWidget {
   const BottomNavigationBarScaffold({super.key, this.child});
@@ -50,10 +65,10 @@ class _BottomNavigationBarScaffoldState
         notchBottomBarController: _controller,
         onTap: changeTab,
         bottomBarItems: [
-          IconNavigationBar(context, Icons.home_outlined, 'Início'),
-          IconNavigationBar(context, Icons.add_to_photos_outlined, 'Criar'),
-          IconNavigationBar(context, Icons.event_outlined, 'Eventos'),
-          IconNavigationBar(context, Icons.logout_outlined, 'Sair'),
+          IconNavigationBar(context, Icons.home_outlined, AppLocale.navigationHome.getString(context)),
+          IconNavigationBar(context, Icons.add_to_photos_outlined, AppLocale.navigationCreate.getString(context)),
+          IconNavigationBar(context, Icons.event_outlined, AppLocale.navigationEvents.getString(context)),
+          IconNavigationBar(context, Icons.logout_outlined, AppLocale.navigationLogout.getString(context)),
         ],
         kIconSize: 24,
         kBottomRadius: 10,

@@ -1,5 +1,19 @@
+import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:go_router/go_router.dart';
+
+const eventsPT = {
+  "eventsTitle": "Meus eventos",
+  "eventsSubtitle": 'Clique no evento para ver quem você sorteou.',
+  "eventsButton": 'Ver detalhes',
+};
+
+const eventsEN = {
+  "eventsTitle": "My events",
+  "eventsSubtitle": 'Click on the event to see who you drew.',
+  "eventsButton": "See details",
+};
 
 class EventsPage extends StatefulWidget {
   const EventsPage({super.key});
@@ -23,12 +37,12 @@ class _EventsPageState extends State<EventsPage> {
       child: Column(
         children: [
           Text( // Título
-            'Meus eventos',
+            AppLocale.eventsTitle.getString(context),
             style: Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(height: 20),
           Text( // Subtítulo
-            'Clique no evento para ver quem você sorteou.',
+            AppLocale.eventsSubtitle.getString(context),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 20),
@@ -47,9 +61,17 @@ class _EventsPageState extends State<EventsPage> {
                     )
                   ) : null,
                   trailing: OutlinedButton.icon(
-                    onPressed: () => context.go(Uri(path: '/event', queryParameters: {'event': 'meueventoid', 'user': 'meuuserid'}).toString()),
+                    onPressed: () => context.go(
+                      Uri(
+                        path: '/event',
+                        queryParameters: {
+                          'event': 'meueventoid',
+                          'user': 'meuuserid'
+                        }
+                      ).toString()
+                    ),
                     icon: const Icon( Icons.remove_red_eye_outlined ),
-                    label: Text('Ver detalhes'),
+                    label: Text(AppLocale.eventsButton.getString(context)),
                   ),
                   titleTextStyle: Theme.of(context).textTheme.displaySmall,
                 );
