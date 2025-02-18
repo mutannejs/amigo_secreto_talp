@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 const loginPT = {
   "login1": "Senha",
@@ -102,6 +103,23 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             SizedBox(height: 16.0),
+            Consumer(
+              builder: (context, ref, child) {
+                return SignInButton( // GoogleSignIn
+                  Buttons.googleDark,
+                  onPressed: () async {
+                    try {
+                      UserCredential userCredential = await signInWithGoogle();
+                      ref.read(currentUser.notifier).state = userCredential.user;
+                      context.go('/home');
+                    } catch (e) {
+                      print('Error: $e');
+                    }
+                  },
+                );
+              },
+            ),
+            SizedBox(height: 16.0),
             TextButton( // SignUp
               onPressed: () => context.go('/signup'),
               child: Text(AppLocale.login2.getString(context)),
@@ -109,10 +127,26 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 30.0),
             Text(AppLocale.login5.getString(context)),
             Text('Murillo Justino dos Santos', style: styleName),
-            Text('João de Camargo Brantz', style: styleName),
+            Text('João Henrique de Camargo Brants', style: styleName),
           ],
         ),
       ),
     );
   }
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Create a new provider
+  GoogleAuthProvider googleProvider = GoogleAuthProvider();
+
+  googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  googleProvider.setCustomParameters({
+    'login_hint': 'user@example.com'
+  });
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+
+  // Or use signInWithRedirect
+  // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
 }
