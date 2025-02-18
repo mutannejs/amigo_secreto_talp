@@ -3,10 +3,6 @@ import 'package:amigo_secreto_talp/utils/localization/locale_pt.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 
 mixin AppLocale {
-  static const String navigationBarTheme = 'navigationBarTheme';
-  static const String navigationBarEvents = 'navigationBarEvents';
-  static const String navigationBarLogout = 'navigationBarLogout';
-
   static const String colorsBlue = 'colorsBlue';
   static const String colorsGreen = 'colorsGreen';
   static const String colorsPurple = 'colorsPurple';
@@ -29,6 +25,29 @@ mixin AppLocale {
   static const String login3 = 'login3';
   static const String login4 = 'login4';
   static const String login5 = 'login5';
+
+  static const String eventsTitle = 'eventsTitle';
+  static const String eventsSubtitle = 'eventsSubtitle';
+  static const String eventsButton = 'eventsButton';
+
+  static const String navigationHome = 'navigationHome';
+  static const String navigationCreate = 'navigationCreate';
+  static const String navigationEvents = 'navigationEvents';
+  static const String navigationLogout = 'navigationLogout';
+
+  static const String eventTitle = 'eventTitle';
+  static const String eventButton = 'eventButton';
+  static const String eventBack = 'eventBack';
+
+  static const String helpTitle = 'helpTitle';
+  static const String helpNavegacao = 'helpNavegacao';
+  static const String helpInicio1 = 'helpInicio1';
+  static const String helpInicio2 = 'helpInicio2';
+  static const String helpInicio3 = 'helpInicio3';
+  static const String helpCriar1 = 'helpCriar1';
+  static const String helpCriar2 = 'helpCriar2';
+  static const String helpEventos = 'helpEventos';
+  static const String helpSair = 'helpSair';
 
   static const Map<String, dynamic> PT = ptVariables;
   static const Map<String, dynamic> EN = enVariables;

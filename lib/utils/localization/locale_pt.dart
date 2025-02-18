@@ -1,10 +1,10 @@
+import 'package:amigo_secreto_talp/components/help.dart';
+import 'package:amigo_secreto_talp/pages/events/event_page.dart';
+import 'package:amigo_secreto_talp/pages/events/events_page.dart';
 import 'package:amigo_secreto_talp/pages/login/login.dart';
+import 'package:amigo_secreto_talp/utils/router/bottom_navigation_bar.dart';
 
 const ptVariables = {
-  "navigationBarTheme": 'Tema',
-  "navigationBarEvents": 'Eventos',
-  "navigationBarLogout": 'Sair',
-
   "colorsBlue": 'azul',
   "colorsGreen": 'verde',
   "colorsPurple": 'roxo',
@@ -22,5 +22,9 @@ const ptVariables = {
   "homeMediumContrast": 'Contraste Médio',
   "homeHighContrast": 'Alto Contraste',
 
-  ...loginPT
+  ...navigationPT,
+  ...loginPT,
+  ...eventsPT,
+  ...eventPT,
+  ...helpPT,
 };
