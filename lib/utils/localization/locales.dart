@@ -39,6 +39,16 @@ mixin AppLocale {
   static const String eventButton = 'eventButton';
   static const String eventBack = 'eventBack';
 
+  static const String helpTitle = 'helpTitle';
+  static const String helpNavegacao = 'helpNavegacao';
+  static const String helpInicio1 = 'helpInicio1';
+  static const String helpInicio2 = 'helpInicio2';
+  static const String helpInicio3 = 'helpInicio3';
+  static const String helpCriar1 = 'helpCriar1';
+  static const String helpCriar2 = 'helpCriar2';
+  static const String helpEventos = 'helpEventos';
+  static const String helpSair = 'helpSair';
+
   static const Map<String, dynamic> PT = ptVariables;
   static const Map<String, dynamic> EN = enVariables;
 

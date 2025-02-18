@@ -1,3 +1,4 @@
+import 'package:amigo_secreto_talp/components/help.dart';
 import 'package:amigo_secreto_talp/pages/events/event_page.dart';
 import 'package:amigo_secreto_talp/pages/events/events_page.dart';
 import 'package:amigo_secreto_talp/pages/login/login.dart';
@@ -25,4 +26,5 @@ const enVariables = {
   ...loginEN,
   ...eventsEN,
   ...eventEN,
+  ...helpEN,
 };
