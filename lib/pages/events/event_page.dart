@@ -1,6 +1,8 @@
+import 'package:amigo_secreto_talp/pages/events/events_page.dart';
 import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 const eventPT = {
@@ -52,12 +54,14 @@ class _EventPageState extends State<EventPage> {
               ),
             ),
             crossFadeState: showFriend,
-            secondChild: Text( // Subtítulo
-              '${widget.user} = ${widget.event}',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 35,
-              )
+            secondChild: Consumer(
+              builder: (context, ref, child) => Text( // Nome da pessoa sorteada
+                ref.read(eventProvider)?['user'] ?? '',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 35,
+                )
+              ),
             ),
           ),
           Spacer(flex: 1,),
