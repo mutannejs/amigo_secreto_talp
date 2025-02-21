@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:amigo_secreto_talp/utils/localization/locales.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -84,8 +86,7 @@ class _EventsPageState extends State<EventsPage> {
                       final countItems = snapshot.data?.length ?? 0;
                       final item = snapshot.data?[index];
                       return ListTile(
-                        title: Text(item['user']),
-                        subtitle: Text(item['user']),
+                        title: Text(item['evento'] ?? ''),
                         shape: index != countItems - 1 ? Border(
                           bottom: BorderSide(
                             color: Theme.of(context).colorScheme.primary,
